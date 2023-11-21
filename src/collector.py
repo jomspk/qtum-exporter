@@ -35,7 +35,9 @@ from .metrics import (
     # Network_totals,
     QTUM_TOTAL_BYTES_RECV, QTUM_TOTAL_BYTES_SENT,
     # Uptime
-    QTUM_UPTIME
+    QTUM_UPTIME,
+    # Staking info
+    QTUM_STAKINGINFO
 )
 
 
@@ -113,6 +115,10 @@ def collect() -> None:
         # Set chain tx stats values
         chain_tx_stats: dict = rpc.get_chain_tx_stats()
         QTUM_TX_COUNT.set(chain_tx_stats["txcount"])
+
+        # Set staking info values
+        staking_info: dict = rpc.get_staking_info()
+        QTUM_STAKINGINFO.state(staking_info["staking"])
 
         # Set mempool info values
         mempool_info: dict = rpc.get_mempool_info()
