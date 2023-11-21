@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from prometheus_client import (
-    Gauge, Counter
+    Gauge, Counter, Enum
 )
 from typing import (
     Optional, Dict
@@ -175,6 +175,12 @@ QTUM_TOTAL_BYTES_SENT: Gauge = Gauge(
 # Uptime metrics
 QTUM_UPTIME: Gauge = Gauge(
     "qtum_uptime", "The number of seconds that the server has been running"
+)
+
+# Staking info
+QTUM_STAKINGINFO: Enum = Enum(
+    "qtum_stakinginfo", "Staking or not",
+    states=["true", "false"]
 )
 
 # Qtum exporters metrics
