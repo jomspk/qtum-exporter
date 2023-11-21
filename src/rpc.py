@@ -203,3 +203,6 @@ class RPC:
 
     def get_uptime(self) -> int:
         return self.call("uptime", [])
+    
+    def get_staking_info(self) -> bool:
+        return self.call("getstakinginfo", [])
