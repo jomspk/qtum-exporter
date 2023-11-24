@@ -117,92 +117,92 @@ class RPC:
         logger.debug(f"Result: {response}")
         return response["result"]
 
-    def get_memory_info(self) -> dict:
-        return self.call("getmemoryinfo", [])
+    # def get_memory_info(self) -> dict:
+    #     return self.call("getmemoryinfo", [])
 
-    def get_mempool_info(self) -> dict:
-        return self.call("getmempoolinfo", [])
+    # def get_mempool_info(self) -> dict:
+    #     return self.call("getmempoolinfo", [])
 
-    def get_mining_info(self) -> dict:
-        return self.call("getmininginfo", [])
+    # def get_mining_info(self) -> dict:
+    #     return self.call("getmininginfo", [])
 
-    def get_network_info(self) -> dict:
-        return self.call("getnetworkinfo", [])
+    # def get_network_info(self) -> dict:
+    #     return self.call("getnetworkinfo", [])
 
-    def get_blockchain_info(self) -> dict:
-        return self.call("getblockchaininfo", [])
+    # def get_blockchain_info(self) -> dict:
+    #     return self.call("getblockchaininfo", [])
 
-    def get_connection_count(self) -> dict:
-        return self.call("getconnectioncount", [])
+    # def get_connection_count(self) -> dict:
+    #     return self.call("getconnectioncount", [])
 
-    def get_chain_tx_stats(self) -> dict:
-        return self.call("getchaintxstats", [])
+    # def get_chain_tx_stats(self) -> dict:
+    #     return self.call("getchaintxstats", [])
 
-    def get_chain_tips(self) -> list:
-        return self.call("getchaintips", [])
+    # def get_chain_tips(self) -> list:
+    #     return self.call("getchaintips", [])
 
-    def get_difficulty(self) -> dict:
-        return self.call("getdifficulty", [])
+    # def get_difficulty(self) -> dict:
+    #     return self.call("getdifficulty", [])
 
-    def get_best_block_hash(self) -> dict:
-        return self.call("getbestblockhash", [])
+    # def get_best_block_hash(self) -> dict:
+    #     return self.call("getbestblockhash", [])
 
-    def get_block_hash(self, height: int) -> dict:
-        return self.call("getblockhash", [height])
+    # def get_block_hash(self, height: int) -> dict:
+    #     return self.call("getblockhash", [height])
 
-    def get_block_count(self) -> dict:
-        return self.call("getblockcount", [])
+    # def get_block_count(self) -> dict:
+    #     return self.call("getblockcount", [])
 
-    def get_block_header(
-            self, block_hash: str, verbose: bool = True
-    ) -> dict:
-        return self.call(
-            "getblockheader", [block_hash, verbose]
-        )
+    # def get_block_header(
+    #         self, block_hash: str, verbose: bool = True
+    # ) -> dict:
+    #     return self.call(
+    #         "getblockheader", [block_hash, verbose]
+    #     )
 
-    def get_block_stats(
-        self, hash_or_height: Union[int, str], *keys: str, timeout: Optional[float] = Config.TIMEOUT
-    ) -> dict:
-        return self.call(
-            "getblockstats", [hash_or_height, list(keys) or None], timeout=Timeout(timeout)
-        )
+    # def get_block_stats(
+    #     self, hash_or_height: Union[int, str], *keys: str, timeout: Optional[float] = Config.TIMEOUT
+    # ) -> dict:
+    #     return self.call(
+    #         "getblockstats", [hash_or_height, list(keys) or None], timeout=Timeout(timeout)
+    #     )
 
-    def get_network_totals(self) -> dict:
-        return self.call("getnettotals", [])
+    # def get_network_totals(self) -> dict:
+    #     return self.call("getnettotals", [])
 
-    def list_banned(self) -> list:
-        return self.call("listbanned", [])
+    # def list_banned(self) -> list:
+    #     return self.call("listbanned", [])
 
-    def get_block(
-        self, block_hash: str, verbosity: int = 1, timeout: Optional[float] = Config.TIMEOUT
-    ) -> dict:
-        return self.call(
-            "getblock", [block_hash, verbosity], timeout=Timeout(timeout)
-        )
+    # def get_block(
+    #     self, block_hash: str, verbosity: int = 1, timeout: Optional[float] = Config.TIMEOUT
+    # ) -> dict:
+    #     return self.call(
+    #         "getblock", [block_hash, verbosity], timeout=Timeout(timeout)
+    #     )
 
-    def estimate_smart_fee(
-        self, num_blocks: int, timeout: Optional[float] = Config.TIMEOUT
-    ) -> dict:
-        return self.call(
-            "estimatesmartfee", [num_blocks], timeout=Timeout(timeout)
-        )
+    # def estimate_smart_fee(
+    #     self, num_blocks: int, timeout: Optional[float] = Config.TIMEOUT
+    # ) -> dict:
+    #     return self.call(
+    #         "estimatesmartfee", [num_blocks], timeout=Timeout(timeout)
+    #     )
 
-    def get_raw_transaction(
-        self, txid: str, verbose: bool = True, block_hash: Optional[str] = None, timeout: Optional[float] = Config.TIMEOUT
-    ) -> dict:
-        return self.call(
-            "getrawtransaction", [txid, verbose, block_hash], timeout=Timeout(timeout)
-        )
+    # def get_raw_transaction(
+    #     self, txid: str, verbose: bool = True, block_hash: Optional[str] = None, timeout: Optional[float] = Config.TIMEOUT
+    # ) -> dict:
+    #     return self.call(
+    #         "getrawtransaction", [txid, verbose, block_hash], timeout=Timeout(timeout)
+    #     )
 
-    def get_network_hash_ps(
-        self, num_blocks: int = -1, height: Optional[int] = None, timeout: Optional[float] = Config.TIMEOUT
-    ) -> int:
-        return self.call(
-            "getnetworkhashps", [num_blocks, height], timeout=Timeout(timeout)
-        )
+    # def get_network_hash_ps(
+    #     self, num_blocks: int = -1, height: Optional[int] = None, timeout: Optional[float] = Config.TIMEOUT
+    # ) -> int:
+    #     return self.call(
+    #         "getnetworkhashps", [num_blocks, height], timeout=Timeout(timeout)
+    #     )
 
-    def get_uptime(self) -> int:
-        return self.call("uptime", [])
+    # def get_uptime(self) -> int:
+    #     return self.call("uptime", [])
     
     def get_staking_info(self) -> bool:
         return self.call("getstakinginfo", [])
