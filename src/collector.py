@@ -37,7 +37,7 @@ from .metrics import (
     # # Uptime
     # QTUM_UPTIME,
     # # Staking info
-    QTUM_STAKINGINFO
+    QTUM_STAKINGINFO_ENABLE, QTUM_STAKINGINFO_STAKING, QTUM_STAKINGINFO_POOLEDTX, QTUM_STAKINGINFO_DIFFICULTY, QTUM_STAKINGINFO_SEARCHINTERVAL, QTUM_STAKINGINFO_WEIGHT, QTUM_STAKINGINFO_DELEGATEWEIGHT, QTUM_STAKINGINFO_NETSTAKEWEIGHT, QTUM_STAKINGINFO_EXPECTEDTIME
 )
 
 
@@ -118,11 +118,22 @@ def collect() -> None:
 
         # Set staking info values
         staking_info: dict = rpc.get_staking_info()
-        if staking_info["staking"]:
-            QTUM_STAKINGINFO.set(1)
+        if staking_info["enabled"]:
+            QTUM_STAKINGINFO_ENABLE.set(1)
         else:
-            QTUM_STAKINGINFO.set(0)
-
+            QTUM_STAKINGINFO_ENABLE.set(0)
+        if staking_info["staking"]:
+            QTUM_STAKINGINFO_STAKING.set(1)
+        else:
+            QTUM_STAKINGINFO_STAKING.set(0)
+        QTUM_STAKINGINFO_POOLEDTX.set(staking_info["pooledtx"])
+        QTUM_STAKINGINFO_DIFFICULTY.set(staking_info["difficulty"])
+        QTUM_STAKINGINFO_SEARCHINTERVAL.set(staking_info["search-interval"])
+        QTUM_STAKINGINFO_WEIGHT.set(staking_info["weight"])
+        QTUM_STAKINGINFO_DELEGATEWEIGHT.set(staking_info["delegateweight"])
+        QTUM_STAKINGINFO_NETSTAKEWEIGHT.set(staking_info["netstakeweight"])
+        QTUM_STAKINGINFO_EXPECTEDTIME.set(staking_info["expectedtime"])
+        
 #         # Set mempool info values
 #         mempool_info: dict = rpc.get_mempool_info()
 #         QTUM_MEMPOOL_BYTES.set(mempool_info["bytes"])
