@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from prometheus_client import (
-    Gauge, Counter, Enum
+    Gauge, Counter
 )
 from typing import (
     Optional, Dict
@@ -178,9 +178,8 @@ QTUM_UPTIME: Gauge = Gauge(
 )
 
 # Staking info
-QTUM_STAKINGINFO: Enum = Enum(
-    "qtum_stakinginfo", "Staking or not",
-    states=["true", "false"]
+QTUM_STAKINGINFO: Gauge = Gauge(
+    "qtum_stakinginfo", "Staking or not"
 )
 
 # Qtum exporters metrics
