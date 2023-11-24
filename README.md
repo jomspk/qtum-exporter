@@ -15,5 +15,5 @@ python3 -m pip install -r requirements.txt
 To run qtum-exporter from source code:
 
 ```shell
-python3 moniter.py
+python3 monitor.py
 ```
