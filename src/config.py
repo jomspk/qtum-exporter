@@ -6,10 +6,10 @@ import os
 
 class Config(object):
     
-    QTUM_RPC_HOST: str = os.environ.get("QTUM_RPC_HOST", default="0.0.0.0")
-    QTUM_RPC_PORT: int = int(os.environ.get("QTUM_RPC_PORT", default="3889"))  # Qtum testnet default port
-    QTUM_RPC_USER: str = os.environ.get("QTUM_RPC_USER", default="qtum")
-    QTUM_RPC_PASSWORD: str = os.environ.get("QTUM_RPC_PASSWORD", default="testpasswd")
+    QTUM_RPC_HOST: str = os.environ.get("QTUM_RPC_HOST", default="127.0.0.1")
+    QTUM_RPC_PORT: int = int(os.environ.get("QTUM_RPC_PORT", default="13889"))  # Qtum testnet default port
+    QTUM_RPC_USER: str = os.environ.get("QTUM_RPC_USER", default="test")
+    QTUM_RPC_PASSWORD: str = os.environ.get("QTUM_RPC_PASSWORD", default="test1234")
 
     HASH_PS_BLOCKS: typing.List[int] = [
         int(block) for block in os.environ.get("HASH_PS_BLOCKS", default="-1,1,120").split(",") if block != str()

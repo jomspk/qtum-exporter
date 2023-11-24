@@ -76,19 +76,19 @@ def collect() -> None:
         QTUM_SIZE_ON_DISK.set(blockchain_info["size_on_disk"])
         QTUM_VERIFICATION_PROGRESS.set(blockchain_info["verificationprogress"])
         
-        # Set latest block stats values
-        latest_block_stats: dict = rpc.get_block_stats(
-            blockchain_info["bestblockhash"], "total_size", "total_weight", "totalfee", "txs", "height", "ins", "outs", "total_out"
-        )
-        if latest_block_stats is not None:
-            QTUM_LATEST_BLOCK_SIZE.set(latest_block_stats["total_size"])
-            QTUM_LATEST_BLOCK_TXS.set(latest_block_stats["txs"])
-            QTUM_LATEST_BLOCK_HEIGHT.set(latest_block_stats["height"])
-            QTUM_LATEST_BLOCK_WEIGHT.set(latest_block_stats["total_weight"])
-            QTUM_LATEST_BLOCK_INPUTS.set(latest_block_stats["ins"])
-            QTUM_LATEST_BLOCK_OUTPUTS.set(latest_block_stats["outs"])
-            QTUM_LATEST_BLOCK_VALUE.set(latest_block_stats["total_out"] / decimal.Decimal(1e8))
-            QTUM_LATEST_BLOCK_FEE.set(latest_block_stats["totalfee"] / decimal.Decimal(1e8))
+        # # Set latest block stats values
+        # latest_block_stats: dict = rpc.get_block_stats(
+        #     blockchain_info["bestblockhash"], "total_size", "total_weight", "totalfee", "txs", "height", "ins", "outs", "total_out"
+        # )
+        # if latest_block_stats is not None:
+        #     QTUM_LATEST_BLOCK_SIZE.set(latest_block_stats["total_size"])
+        #     QTUM_LATEST_BLOCK_TXS.set(latest_block_stats["txs"])
+        #     QTUM_LATEST_BLOCK_HEIGHT.set(latest_block_stats["height"])
+        #     QTUM_LATEST_BLOCK_WEIGHT.set(latest_block_stats["total_weight"])
+        #     QTUM_LATEST_BLOCK_INPUTS.set(latest_block_stats["ins"])
+        #     QTUM_LATEST_BLOCK_OUTPUTS.set(latest_block_stats["outs"])
+        #     QTUM_LATEST_BLOCK_VALUE.set(latest_block_stats["total_out"] / decimal.Decimal(1e8))
+        #     QTUM_LATEST_BLOCK_FEE.set(latest_block_stats["totalfee"] / decimal.Decimal(1e8))
         
         # Set network info values
         list_banned: list = rpc.list_banned()
